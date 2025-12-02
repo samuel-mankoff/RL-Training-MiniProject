@@ -159,7 +159,7 @@ def create_velocity_env_cfg(
     ),
      # add more terms here
     "base_lin_vel": ObservationTermCfg(
-      fucn = mdp.builtin_sensor,
+      func = mdp.builtin_sensor,
       params={"sensor_name": "robot/imu_lin_vel"},
       noise=Unoise(n_min=-0.5, n_max=0.5),
     ),
