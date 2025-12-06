@@ -194,12 +194,12 @@ def create_velocity_env_cfg(
     "policy": ObservationGroupCfg(
       terms=policy_terms,
       concatenate_terms=True,
-      enable_corruption=True, #??????,
+      enable_corruption=True, #??????, THis says to be filled in for part 3 b but i wasnt sure if the training would run if i left enable_corruption = ??????
     ),
     "critic": ObservationGroupCfg(
       terms=critic_terms,
       concatenate_terms=True,
-      enable_corruption=False, #?????, 
+      enable_corruption=False, #?????, THis says to be filled in for part 3 b but i wasnt sure if the training would run if i left enable_corruption = ??????
     ),
   }
 
