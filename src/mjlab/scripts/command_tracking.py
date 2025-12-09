@@ -425,7 +425,7 @@ def run_tracking_eval(log_dir: str, num_steps: int = 500):
         
         logs["meas_vx"].append(base_vel[0].item())
         logs["meas_vy"].append(base_vel[1].item())
-        logs["meas_wz"].append(-ang_vel[2].item())
+        logs["meas_wz"].append(ang_vel[2].item())
 
     # 6. Plotting
     fig, axs = plt.subplots(3, 1, figsize=(10, 12), sharex=True)
