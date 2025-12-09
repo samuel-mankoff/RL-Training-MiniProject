@@ -425,7 +425,21 @@ def run_tracking_eval(log_dir: str, num_steps: int = 500):
         
         logs["meas_vx"].append(base_vel[0].item())
         logs["meas_vy"].append(base_vel[1].item())
-        logs["meas_wz"].append(ang_vel[2].item())
+        # logs["meas_wz"].append(ang_vel[2].item())
+
+        heading = env.unwrapped.scene["robot"].data.heading_w[0].item()
+
+        if prev_heading is None:
+            yaw_rate = 0.0
+        else:
+            dh = heading - prev_heading
+            # wrap to [-pi, pi]
+            dh = (dh + np.pi) % (2 * np.pi) - np.pi
+            yaw_rate = dh / env.unwrapped.step_dt
+
+        prev_heading = heading
+
+        logs["meas_wz"].append(yaw_rate)
 
     # 6. Plotting
     fig, axs = plt.subplots(3, 1, figsize=(10, 12), sharex=True)
